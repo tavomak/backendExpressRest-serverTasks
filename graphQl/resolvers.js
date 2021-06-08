@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Project = require("../models/Project");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -37,6 +38,20 @@ const resolvers = {
         const userId = await jwt.verify(token, process.env.SECRET);
         return userId;
     },
+    getProjects: async (_, { token }) => {
+        const userId = await jwt.verify(token, process.env.SECRET);
+        try {
+            const project = await Project.find({ user: userId.id })
+            // if (project.length === 0) {
+            //     console.log(project.length);
+            //     return "no projects found";
+            // }
+            // console.log('pasó')
+            return project;
+        } catch (error) {
+            console.log(error)
+        }
+    }
   },
   Mutation: {
     newUser: async (_, { input }) => {

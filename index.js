@@ -29,6 +29,7 @@ server.applyMiddleware({ app })
 // importar rutas
 app.use('/api/user', require('./routes/user'));
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/projects', require('./routes/project'));
 
 // Inicializar el servidor
 app.listen(PORT, () => console.log(`Server up in ${PORT} port`))

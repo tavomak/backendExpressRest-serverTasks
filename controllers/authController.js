@@ -4,7 +4,7 @@ const { validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 
 exports.authUser = async (req, res) => {
-  console.log("From UserController", req.body);
+  // console.log("From UserController", req.body);
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
